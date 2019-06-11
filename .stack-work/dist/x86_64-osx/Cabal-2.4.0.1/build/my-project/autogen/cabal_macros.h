@@ -55,17 +55,6 @@
   (major1) == 0 && (major2) == 11 && (minor) <= 4)
 #endif /* MIN_VERSION_scotty */
 
-/* package time-1.8.0.2 */
-#ifndef VERSION_time
-#define VERSION_time "1.8.0.2"
-#endif /* VERSION_time */
-#ifndef MIN_VERSION_time
-#define MIN_VERSION_time(major1,major2,minor) (\
-  (major1) <  1 || \
-  (major1) == 1 && (major2) <  8 || \
-  (major1) == 1 && (major2) == 8 && (minor) <= 0)
-#endif /* MIN_VERSION_time */
-
 /* tool gcc-4.2.1 */
 #ifndef TOOL_VERSION_gcc
 #define TOOL_VERSION_gcc "4.2.1"
@@ -155,7 +144,7 @@
 #endif /* MIN_TOOL_VERSION_runghc */
 
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "my-project-0.1.0.0-7LyRm7MwBnA5wtpwK74szs-my-project"
+#define CURRENT_COMPONENT_ID "my-project-0.1.0.0-G1xdVGGa76CH6nUShO8HAR-my-project"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"

@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/bin"
-libdir     = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/lib/x86_64-osx-ghc-8.6.5/my-project-0.1.0.0-7LyRm7MwBnA5wtpwK74szs-my-project"
+libdir     = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/lib/x86_64-osx-ghc-8.6.5/my-project-0.1.0.0-G1xdVGGa76CH6nUShO8HAR-my-project"
 dynlibdir  = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/lib/x86_64-osx-ghc-8.6.5"
 datadir    = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/share/x86_64-osx-ghc-8.6.5/my-project-0.1.0.0"
 libexecdir = "/Users/marcin/haskell/stack-projects/my-project/.stack-work/install/x86_64-osx/lts-13.24/8.6.5/libexec/x86_64-osx-ghc-8.6.5/my-project-0.1.0.0"
