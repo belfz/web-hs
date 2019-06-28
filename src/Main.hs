@@ -1,23 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DeriveGeneric #-}
 module Main where
 
 import Data.Monoid ((<>))
-import Data.Aeson (FromJSON, ToJSON)
-import GHC.Generics
-import Web.Scotty
 import Network.HTTP.Types.Status
+import Web.Scotty
 
-data Color = Red | Green | Blue deriving (Show, Generic)
-instance ToJSON Color
-instance FromJSON Color
-
-data User = User { userId :: Int, name :: String, color :: Color } deriving (Show, Generic)
-instance ToJSON User
-instance FromJSON User
-
-bluify :: User -> User
-bluify user = User { userId = (userId user), name = (name user), color = Blue }
+import Domain.Color
+import Domain.User
 
 bob :: User
 bob = User { userId = 1, name = "bob", color = Red }
