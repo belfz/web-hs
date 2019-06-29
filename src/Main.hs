@@ -36,18 +36,10 @@ usersRoute = do
 userRoute :: ActionM ()
 userRoute = do
   id <- param "id"
-  let found = (filter (\el -> (userId el) == id) allUsers)
-  if length found == 0
-    then do
-      status notFound404
-      emptyRes
-    else do
-      status ok200
-      json (found !! 0)
-  -- an equivalent to:    
-  -- if length found == 0
-  --   then (status notFound404) >>= (\_ -> emptyRes)
-  --   else (status ok200) >>= (\_ -> json (found !! 0))
+  let searchedUser = (filter ((== id) . userId) allUsers)
+  mapResponse searchedUser
+    where mapResponse []    = (status notFound404) >>= (\_ -> emptyRes)
+          mapResponse (u:_) = (status ok200) >>= (\_ -> json u)
 
 bluifyRoute :: ActionM ()
 bluifyRoute = do
