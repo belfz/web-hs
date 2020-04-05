@@ -26,15 +26,15 @@ paramRoute = do
 
 usersRoute :: RouteHandler
 usersRoute = do
-  json allUsers
+  json getAllUsers
 
 userRoute :: RouteHandler
 userRoute = do
   id <- param "id"
-  let searchedUser = (filter ((== id) . userId) allUsers)
-  mapResponse searchedUser
-    where mapResponse []    = (status notFound404) >> emptyRes
-          mapResponse (u:_) = (status ok200) >> (json u)
+  let maybeUser = getUserById id
+  mapResponse maybeUser
+    where mapResponse Nothing    = (status notFound404) >> emptyRes
+          mapResponse (Just user) = (status ok200) >> (json user)
 
 bluifyRoute :: RouteHandler
 bluifyRoute = do
