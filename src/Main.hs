@@ -33,8 +33,8 @@ userRoute = do
   id <- param "id"
   let searchedUser = (filter ((== id) . userId) allUsers)
   mapResponse searchedUser
-    where mapResponse []    = (status notFound404) >>= (\_ -> emptyRes)
-          mapResponse (u:_) = (status ok200) >>= (\_ -> json u)
+    where mapResponse []    = (status notFound404) >> emptyRes
+          mapResponse (u:_) = (status ok200) >> (json u)
 
 bluifyRoute :: RouteHandler
 bluifyRoute = do
