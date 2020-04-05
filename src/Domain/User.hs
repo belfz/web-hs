@@ -5,7 +5,7 @@ import Data.Aeson (FromJSON, ToJSON)
 import GHC.Generics
 import Domain.Color
 
-data User = User { userId :: Int, name :: String, color :: Color } deriving (Show, Generic)
+data User = User { userId :: Int, name :: String, color :: Color } deriving (Eq, Show, Generic)
 instance ToJSON User
 instance FromJSON User
 

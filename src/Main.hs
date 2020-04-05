@@ -8,32 +8,27 @@ import Web.Scotty
 import Domain.Color
 import Domain.User
 
-bob :: User
-bob = User { userId = 1, name = "bob", color = Red }
+import Repository.Users
 
-jenny :: User
-jenny = User { userId= 2, name = "jenny", color = Blue }
+type RouteHandler = ActionM ()
 
-allUsers :: [User]
-allUsers = [bob, jenny]
-
-emptyRes :: ActionM ()
+emptyRes :: RouteHandler
 emptyRes = text ""
 
-helloRoute :: ActionM ()
+helloRoute :: RouteHandler
 helloRoute = do
   text "howdy!"
 
-paramRoute :: ActionM ()
+paramRoute :: RouteHandler
 paramRoute = do
   name <- param "name"
   text ("yo " <> name <> "!")
 
-usersRoute :: ActionM ()
+usersRoute :: RouteHandler
 usersRoute = do
   json allUsers
 
-userRoute :: ActionM ()
+userRoute :: RouteHandler
 userRoute = do
   id <- param "id"
   let searchedUser = (filter ((== id) . userId) allUsers)
@@ -41,11 +36,10 @@ userRoute = do
     where mapResponse []    = (status notFound404) >>= (\_ -> emptyRes)
           mapResponse (u:_) = (status ok200) >>= (\_ -> json u)
 
-bluifyRoute :: ActionM ()
+bluifyRoute :: RouteHandler
 bluifyRoute = do
   user <- jsonData
-  let blueUser = bluify user
-  json blueUser
+  json (bluify user)
 
 routes :: ScottyM ()
 routes = do
