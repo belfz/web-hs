@@ -1,11 +1,10 @@
-{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 import Data.Monoid ((<>))
 import Network.HTTP.Types.Status
 import Web.Scotty
 
-import Domain.Color
+import Domain.Color()
 import Domain.User
 
 import Repository.Users
@@ -21,8 +20,8 @@ helloRoute = do
 
 paramRoute :: RouteHandler
 paramRoute = do
-  name <- param "name"
-  text ("yo " <> name <> "!")
+  nameP <- param "name"
+  text ("yo " <> nameP <> "!")
 
 usersRoute :: RouteHandler
 usersRoute = do
@@ -30,10 +29,10 @@ usersRoute = do
 
 userRoute :: RouteHandler
 userRoute = do
-  id <- param "id"
-  let maybeUser = getUserById id
+  idP <- param "id"
+  let maybeUser = getUserById idP
   mapResponse maybeUser
-    where mapResponse Nothing    = (status notFound404) >> emptyRes
+    where mapResponse Nothing     = (status notFound404) >> emptyRes
           mapResponse (Just user) = (status ok200) >> (json user)
 
 bluifyRoute :: RouteHandler
